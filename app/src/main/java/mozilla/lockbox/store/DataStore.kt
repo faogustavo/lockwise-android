@@ -27,6 +27,7 @@ import mozilla.lockbox.support.AutoLockSupport
 import mozilla.lockbox.support.DataStoreSupport
 import mozilla.lockbox.support.Optional
 import mozilla.lockbox.support.asOptional
+import org.mozilla.fxaclient.internal.Config
 import kotlin.coroutines.CoroutineContext
 
 @ExperimentalCoroutinesApi
@@ -293,4 +294,10 @@ open class DataStore(
         // we shouldn't set the status of this to Unprepared,
         // as we don't want to change any UI.
     }
+
+//    fun addCredential(username: String, password: String){
+//         retrieve the save request
+//         add as ServerPassword to list
+//
+//    }
 }

@@ -126,6 +126,8 @@ class LockboxAutofillService(
             .addTo(compositeDisposable)
     }
 
-    // to be implemented in issue #217
-    override fun onSaveRequest(request: SaveRequest, callback: SaveCallback) {}
+    override fun onSaveRequest(request: SaveRequest, callback: SaveCallback) {
+        log.info("Save request values: $request")
+        callback.onSuccess()
+    }
 }

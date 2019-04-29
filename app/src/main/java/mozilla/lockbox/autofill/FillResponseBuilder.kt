@@ -6,6 +6,7 @@ import android.content.IntentSender
 import android.os.Build
 import android.service.autofill.Dataset
 import android.service.autofill.FillResponse
+import android.service.autofill.SaveInfo
 import android.view.autofill.AutofillId
 import android.view.autofill.AutofillValue
 import android.widget.RemoteViews
@@ -29,7 +30,9 @@ open class FillResponseBuilder(
         presentation.setTextViewText(R.id.autofill_cta, context.getString(R.string.autofill_authenticate_cta))
 
         val sender = IntentBuilder.getAuthIntentSender(context, this)
+
         responseBuilder.setAuthentication(autofillIds(), sender, presentation)
+        responseBuilder.setSaveInfo(addSaveResponse())
 
         return responseBuilder.build()
     }
@@ -47,7 +50,15 @@ open class FillResponseBuilder(
         addSearchFallback(context) { sender, presentation ->
             builder.setAuthentication(autofillIds(), sender, presentation)
         }
+        builder.setSaveInfo(addSaveResponse())
         return builder.build()
+    }
+
+    private fun addSaveResponse() : SaveInfo {
+        return SaveInfo.Builder(
+            SaveInfo.SAVE_DATA_TYPE_PASSWORD,
+            autofillIds()
+        ).build()
     }
 
     private fun addSearchFallback(
@@ -87,6 +98,7 @@ open class FillResponseBuilder(
             builder.addDataset(datasetBuilder.build())
         }
 
+        builder.setSaveInfo(addSaveResponse())
         return builder.build()
     }
 
