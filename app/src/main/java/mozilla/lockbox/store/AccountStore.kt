@@ -21,6 +21,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.rx2.asMaybe
 import kotlinx.coroutines.rx2.asSingle
+import mozilla.appservices.fxaclient.FxaException
 import mozilla.components.concept.sync.AccessTokenInfo
 import mozilla.components.concept.sync.Avatar
 import mozilla.components.service.fxa.Config
@@ -41,11 +42,6 @@ import mozilla.lockbox.support.SecurePreferences
 import mozilla.lockbox.support.asOptional
 import java.util.concurrent.TimeUnit
 import kotlin.coroutines.CoroutineContext
-<<<<<<< HEAD
-import org.mozilla.fxaclient.internal.FxaException
-=======
-import mozilla.appservices.fxaclient.FxaException
->>>>>>> Lint updates
 
 @ExperimentalCoroutinesApi
 open class AccountStore(
