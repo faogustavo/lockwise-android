@@ -24,6 +24,7 @@ import mozilla.lockbox.store.FingerprintStore
 import mozilla.lockbox.store.LockedStore
 import mozilla.lockbox.store.SettingStore
 import org.junit.Before
+import org.junit.Ignore
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -99,6 +100,7 @@ class AutofillLockedPresenterTest : DisposingTest() {
         dispatcherObserver.assertValueAt(0, DataStoreAction.Unlock)
     }
 
+    @Ignore("This test is flaky.")
     @Test
     fun `unlock when fingerprint auth is available and enabled`() {
         Mockito.`when`(fingerprintStore.isFingerprintAuthAvailable).thenReturn(true)
